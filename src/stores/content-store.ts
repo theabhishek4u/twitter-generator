@@ -1,0 +1,102 @@
+import { create } from 'zustand'
+
+type State = {
+  profileImage: string,
+  name: string,
+  username: string,
+  date: string,
+  additionalYear: boolean,
+  textContent: string,
+  tweetWidth: 'md' | 'lg' | 'xl',
+  profileShape: 'square' | 'rounded' | 'circle',
+  verified: 'none' | 'blue' | 'gold' | 'gray',
+  liked: boolean,
+  reposted: boolean,
+  viewed: boolean,
+  colorMode: 'light' | 'dark',
+  repost: string | number,
+  like: string | number,
+  view: string | number,
+  imageContent: string
+}
+
+type Action = {
+  setProfileImage: (profileImage: string) => void,
+  setName: (name: string) => void,
+  setUsername: (username: string) => void,
+  setDate: (date: string) => void,
+  setAdditionalYear: (additionalYear: boolean) => void,
+  setTextContent: (textContent: string) => void,
+  setTweetWidth: (tweetWidth: 'md' | 'lg' | 'xl') => void,
+  setProfileShape: (profileShape: 'square' | 'rounded' | 'circle') => void,
+  setVerified: (verified: 'none' | 'blue' | 'gold' | 'gray') => void,
+  setLiked: (liked: boolean) => void,
+  setReposted: (reposted: boolean) => void,
+  setViewed: (viewed: boolean) => void,
+  setColorMode: (colorMode: 'light' | 'dark') => void,
+  setRepost: (repost: string | number) => void,
+  setLike: (like: string | number) => void,
+  setView: (view: string | number) => void,
+  setImageContent: (imageContent: string) => void,
+  resetState: () => void
+}
+
+const initialState: State = {
+  profileImage: '',
+  name: '',
+  username: '',
+  date: '',
+  additionalYear: false,
+  textContent: '',
+  tweetWidth: 'md',
+  profileShape: 'circle',
+  verified: 'none',
+  liked: false,
+  reposted: false,
+  viewed: false,
+  colorMode: 'light',
+  repost: '',
+  like: '',
+  view: '',
+  imageContent: ''
+}
+
+const useContentStore = create<State & Action>((set) => ({
+  profileImage: '',
+  name: '',
+  username: '',
+  date: '',
+  additionalYear: false,
+  textContent: '',
+  tweetWidth: 'md',
+  profileShape: 'circle',
+  verified: 'none',
+  liked: false,
+  reposted: false,
+  viewed: false,
+  colorMode: 'light',
+  repost: '',
+  like: '',
+  view: '',
+  imageContent: '',
+  setProfileImage: (profileImage) => set({ profileImage }),
+  setName: (name) => set({ name }),
+  setUsername: (username) => set({ username }),
+  setDate: (date) => set({ date }),
+  setAdditionalYear: (additionalYear) => set({ additionalYear }),
+  setTextContent: (textContent) => set({ textContent }),
+  setTweetWidth: (tweetWidth) => set({ tweetWidth }),
+  setProfileShape: (profileShape) => set({ profileShape }),
+  setVerified: (verified) => set({ verified }),
+  setLiked: (liked) => set({ liked }),
+  setReposted: (reposted) => set({ reposted }),
+  setViewed: (viewed) => set({ viewed }),
+  setColorMode: (colorMode) => set({ colorMode }),
+  setRepost: (repost) => set({ repost }),
+  setLike: (like) => set({ like }),
+  setView: (view) => set({ view }),
+  setImageContent: (imageContent) => set({ imageContent }),
+  resetState: () => set(initialState)
+}))
+
+export default useContentStore
